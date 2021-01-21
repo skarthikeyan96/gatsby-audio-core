@@ -5,14 +5,12 @@ import { graphql } from 'gatsby'
 
  export const query = graphql`
   query aboutQuery {
-    allContentfulAbout {
-        nodes {
-          title
-          description {
-            description
-          }
-        }
+    contentfulAbout {
+      description {
+        description
       }
+      title
+    }
   }
 `
 
@@ -55,9 +53,9 @@ const pageStyles = {
 
   
 const AboutPage = ({data}) => {
-    const {allContentfulAbout:{nodes}} = data;
-    const title = nodes[0].title;
-    const description = nodes[0].description.description;
+    const temp = data.contentfulAbout;
+    const title = temp.title;
+    const description = temp.description.description;
   
     return (
       <>
