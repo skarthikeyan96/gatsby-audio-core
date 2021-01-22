@@ -1,9 +1,8 @@
 import * as React from "react";
-import { graphql } from "gatsby";
 import { Link } from "gatsby";
 
 export const query = graphql`
-  query MyQuery {
+  query {
     contentfulIndex {
       description {
         description

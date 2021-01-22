@@ -1,8 +1,6 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
-import { graphql } from "gatsby";
-
 export const query = graphql`
   query locationsQuery {
     allContentfulLocations {

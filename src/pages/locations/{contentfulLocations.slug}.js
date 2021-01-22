@@ -31,8 +31,7 @@ const footerStyle ={
 }
 
 
-function Location({ data }) {
-  console.log(data)
+const Location = ({ data }) => {
   return (
     <>
      <main style={pageStyles}>

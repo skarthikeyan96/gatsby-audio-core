@@ -1,10 +1,8 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import { graphql } from 'gatsby'
-
  export const query = graphql`
-  query aboutQuery {
+  query {
     contentfulAbout {
       description {
         description
