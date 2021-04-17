@@ -21,8 +21,10 @@
     "dotenv": "8.2.0",
     "framer-motion": "3.2.2-rc.1",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-sharp": "^3.3.0",
     "gatsby-source-contentful": "4.4.0",
     "gatsby-source-wordpress": "^5.3.0",
+    "gatsby-transformer-sharp": "^3.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   }
