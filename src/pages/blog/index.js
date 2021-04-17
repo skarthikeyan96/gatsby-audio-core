@@ -1,13 +1,17 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import parse from "html-react-parser";
 
 export const query = graphql`
   query {
-    contentfulIndex {
-      description {
-        description
+    allWpPost {
+      nodes {
+        id
+        title
+        excerpt
+        slug
+        date(formatString: "MMMM DD, YYYY")
       }
-      title
     }
   }
 `;
@@ -48,15 +52,12 @@ const footerStyle = {
 };
 
 // markup
-const IndexPage = ({ data }) => {
-  const temp = data.contentfulIndex;
-  const title = temp.title;
-  const description = temp.description.description;
-
+const BlogPage = ({ data }) => {
+  const posts = data.allWpPost.nodes;
   return (
     <>
       <main style={pageStyles}>
-        <title>{title}</title>
+        <title>Posts</title>
         <ul style={outerStyle}>
           <li>
             {" "}
@@ -84,8 +85,34 @@ const IndexPage = ({ data }) => {
             </Link>
           </li>
         </ul>
-        <h1 style={headingStyles}>{title}</h1>
-        <p style={paragraphStyles}> {description} </p>
+        <h4>Posts</h4>
+        <ol style={{ listStyle: `none` }}>
+          {posts.map((post) => {
+            const title = post.title;
+
+            return (
+              <li key={post.uri}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>
+                      <Link to={`/blog/${post.slug}`} itemProp="url">
+                        <span itemProp="headline">{parse(title)}</span>
+                      </Link>
+                    </h2>
+                    <small>{post.date}</small>
+                  </header>
+                  <section itemProp="description">
+                    {parse(post.excerpt)}
+                  </section>
+                </article>
+              </li>
+            );
+          })}
+        </ol>
       </main>
       <footer style={footerStyle}>
         <span>
@@ -103,4 +130,4 @@ const IndexPage = ({ data }) => {
   );
 };
 
-export default IndexPage;
+export default BlogPage;

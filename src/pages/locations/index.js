@@ -51,6 +51,12 @@ const locations = ({ data }) => {
         <ul style={outerStyle}>
         <li> <Link style={linkStyle} to="/"> Home </Link></li>
         <li><Link style={linkStyle} to="/about"> About </Link></li>
+        <li>
+            <Link style={linkStyle} to="/blog">
+              {" "}
+              Blog{" "}
+            </Link>
+          </li>
         <li><Link style={linkStyle} to="/locations"> Locations </Link></li>
        </ul>
        <ul style={{}} className='links'>
